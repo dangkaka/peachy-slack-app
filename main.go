@@ -12,8 +12,10 @@ import (
 
 const url = "https://www.instagram.com/explore/tags/%s/?__a=1"
 
+var randomTags = []string{"vietnamesegirl", "dantocmongto"}
+
 var tags = map[string]string {
-	"dtm": "dantocmong",
+	"vnbabe": "vietnamesegirl",
 }
 
 type InstagTagResponse struct {
@@ -33,6 +35,9 @@ type Edge struct {
 }
 
 func getInstaImg(tag string) (string, error) {
+	if tag == "" {
+		tag = randomTags[rand.Intn(len(randomTags))]
+	}
 
 	rs, err := http.Get(fmt.Sprintf(url, tag))
 
@@ -53,7 +58,11 @@ func getInstaImg(tag string) (string, error) {
 	}
 
 	edges := result.Graphql.Hashtag.EdgeHashtagToMedia.Edges
-	randomEdge := edges[rand.Intn(len(edges))]
+	max := len(edges)
+	if max > 100 {
+		max = 100
+	}
+	randomEdge := edges[rand.Intn(max)]
 
 	return randomEdge.Node.DisplayUrl, nil
 }
@@ -65,14 +74,15 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, `{"error": "wrong input"}`)
 		return
 	}
-	tag := r.FormValue("tag")
-	fmt.Println(tag)
-	var instaTag string
-	if val, ok := tags[tag]; ok {
-		instaTag = val
-	} else {
-		fmt.Fprint(w, `{"error": "no tag found"}`)
-		return
+	tag := r.FormValue("text")
+	instaTag := ""
+	if tag != "" {
+		if val, ok := tags[tag]; ok {
+			instaTag = val
+		} else {
+			fmt.Fprint(w, `{"error": "no tag found"}`)
+			return
+		}
 	}
 	imgUrl, err := getInstaImg(instaTag)
 	if err != nil {
