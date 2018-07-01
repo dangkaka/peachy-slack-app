@@ -4,6 +4,11 @@ A slack app to get "peachy" image from instagram :smile:
 
 Tag and profile are supported
 
+## How to use
+* `/peachy` : get a random image
+* `/peachy #tag`: get a image by #tag
+* `/peachy @profile`: get a image by @profile
+
 ## Deployment
 
 Using [apex/up](https://github.com/apex/up)
