@@ -1,6 +1,7 @@
 # peachy-slack-bot
 
 A slack app to get random image from instagram by tag or profile
+
 Default will get image from "peachy" profiles :">
 
 ## Deployment
