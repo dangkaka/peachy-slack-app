@@ -1,6 +1,6 @@
 # peachy-slack-bot
 
-A slack app to get "peachy" image from instagram :smile:
+A slack app to get "peachy" image from instagram :girl: :peach:
 
 Tag and profile are supported
 
