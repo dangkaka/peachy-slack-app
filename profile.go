@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/andrewfrench/instagram-api-bypass/pkg/common/extract"
 	"math/rand"
 )
 
@@ -19,13 +18,17 @@ var randomProfiles = []string{
 }
 
 type InstagProfileResponse struct {
-	Graphql struct {
-		Hashtag struct {
-			EdgeHashtagToMedia struct {
-				Edges []Edge `json:"edges"`
-			} `json:"edge_hashtag_to_media"`
-		} `json:"hashtag"`
-	} `json:"graphql"`
+	EntryData struct {
+		ProfilePage []struct {
+			Graphql struct {
+				User struct {
+					EdgeOwnerToTimelineMedia struct {
+						Edges []Edge `json:"edges"`
+					} `json:"edge_owner_to_timeline_media"`
+				} `json:"user"`
+			} `json:"graphql"`
+		} `json:"ProfilePage"`
+	} `json:"entry_data"`
 }
 
 func GetRandomFromProfile() (string, error) {
@@ -39,7 +42,7 @@ func GetFromProfile(profile string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	response, err = extract.ExtractJson(response)
+	response, err = ExtractJson(response)
 	if err != nil {
 		return "", err
 	}
@@ -48,7 +51,7 @@ func GetFromProfile(profile string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	edges := result.Graphql.Hashtag.EdgeHashtagToMedia.Edges
+	edges := result.EntryData.ProfilePage[0].Graphql.User.EdgeOwnerToTimelineMedia.Edges
 	max := len(edges)
 	if max > 100 {
 		max = 100
