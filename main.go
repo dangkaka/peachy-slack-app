@@ -37,10 +37,6 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	imgUrl, err := getInstaImg("")
-	fmt.Println(imgUrl, err)
-	return
-
 	addr := ":" + os.Getenv("PORT")
 	http.HandleFunc("/", handler)
 
