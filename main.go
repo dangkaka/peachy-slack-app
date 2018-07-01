@@ -33,7 +33,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "`no img found`")
 		return
 	}
-	fmt.Fprintf(w, `{"response_type": "in_channel", "text": "%s"}`, imgUrl)
+	fmt.Fprintf(w, `{"response_type": "in_channel", "attachments": [{"fields": [{"title": "%s"}],"image_url": "%s"}]}`, text, imgUrl)
 }
 
 func main() {
