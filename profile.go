@@ -9,12 +9,12 @@ import (
 const profileUrl = "https://www.instagram.com/%s"
 
 var randomProfiles = []string{
-	"vietnamsexy.girl",
-	"vietnam_sexygirl_asian",
 	"vsbg.sexy",
 	"asian_girls79",
 	"asianhotgirlsdaily",
 	"asian_girls_cuties",
+	"vnsexy.collection",
+	"vietnamesexybabe",
 }
 
 type InstagProfileResponse struct {
