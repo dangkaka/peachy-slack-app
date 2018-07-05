@@ -29,7 +29,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//strip string
-	limitedChannels := strings.Replace(" ", "", os.Getenv("LIMITED_CHANNELS"), -1)
+	limitedChannels := strings.Replace(os.Getenv("LIMITED_CHANNELS"), " ", "", -1)
 	if limitedChannels != "" {
 		limitedChannelsArr := strings.Split(limitedChannels, ",")
 		if !contains(limitedChannelsArr, r.FormValue("channel_name")) {
