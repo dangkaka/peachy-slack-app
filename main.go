@@ -8,10 +8,19 @@ import (
 	"strings"
 )
 
+func isValidInput(text string) bool {
+	if len(text) < 1 {
+		return true
+	} else if text[:1] == "@" || text[:1] == "#" {
+		return true
+	}
+	return false
+}
+
 func getInstaImg(text string) (string, error) {
 	var imgUrl string
 	var err error
-	if len(text) <= 1 {
+	if len(text) < 1 {
 		imgUrl, err = GetRandomFromProfile()
 	} else if text[:1] == "@" {
 		imgUrl, err = GetFromProfile(text[1:])
@@ -39,6 +48,10 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	text := r.FormValue("text")
+	if !isValidInput(text) {
+		fmt.Fprint(w, "`Invalid input`")
+		return
+	}
 	imgUrl, err := getInstaImg(text)
 	if err != nil {
 		fmt.Fprint(w, "`No img found`")
