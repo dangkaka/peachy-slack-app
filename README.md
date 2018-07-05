@@ -9,6 +9,11 @@ Tag and profile are supported
 * `/peachy #tag`: get a image by #tag
 * `/peachy @profile`: get a image by @profile
 
+### Configuration
+* `LIMITED_CHANNELS`(`up.json`): list of channels this bot can post to, not work well with private groups
+    - Example:  `"LIMITED_CHANNELS": "privategroup, random"`
+    - `privategroup` == all private groups
+
 ## Deployment
 
 Using [apex/up](https://github.com/apex/up)
