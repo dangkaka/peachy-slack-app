@@ -1,11 +1,9 @@
 # peachy-slack-bot
 
-A slack app to get "peachy" image from instagram :girl: :peach:
-
 Tag and profile are supported
 
 ## How to use
-* `/peachy` : get a random image
+* `/peachy`: get a random "peachy" image
 * `/peachy #tag`: get a image by #tag
 * `/peachy @profile`: get a image by @profile
 
