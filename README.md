@@ -3,7 +3,7 @@
 Tag and profile are supported
 
 ## How to use
-* `/peachy`: get a random "peachy" image
+* `/peachy NSFW`: get a random "peachy" image
 * `/peachy #tag`: get a image by #tag
 * `/peachy @profile`: get a image by @profile
 
