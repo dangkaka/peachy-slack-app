@@ -14,7 +14,7 @@ Tag and profile are supported
     - Example:  `"LIMITED_CHANNELS": "directmessage, privategroup, general"`
         - `privategroup` == all private groups
         - `general` == #general
-        -  `directmessage` = all direct message
+        - `directmessage` == all direct message
 
 ## Deployment
 
