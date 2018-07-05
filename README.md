@@ -11,9 +11,10 @@ Tag and profile are supported
 
 ### Configuration
 * `LIMITED_CHANNELS`(`up.json`): list of channels this bot can post to, not work well with private groups
-    - Example:  `"LIMITED_CHANNELS": "privategroup, general"`
+    - Example:  `"LIMITED_CHANNELS": "directmessage, privategroup, general"`
         - `privategroup` == all private groups
         - `general` == #general
+        -  `directmessage` = all direct message
 
 ## Deployment
 
