@@ -3,6 +3,6 @@
   "profile": "money",
   "regions": ["ap-southeast-1"],
   "environment": {
-    "LIMITED_CHANNELS": ""
+    "LIMITED_CHANNELS": "privategroup"
   }
 }
