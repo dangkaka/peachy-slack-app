@@ -9,9 +9,7 @@ import (
 )
 
 func isValidInput(text string) bool {
-	if len(text) < 1 {
-		return true
-	} else if text[:1] == "@" || text[:1] == "#" {
+	if len(text) >= 2 && (text == "NSFW" || text[:1] == "@" || text[:1] == "#") {
 		return true
 	}
 	return false
@@ -20,7 +18,7 @@ func isValidInput(text string) bool {
 func getInstaImg(text string) (string, error) {
 	var imgUrl string
 	var err error
-	if len(text) < 1 {
+	if text == "NSFW" {
 		imgUrl, err = GetRandomFromProfile()
 	} else if text[:1] == "@" {
 		imgUrl, err = GetFromProfile(text[1:])
