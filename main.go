@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 func getInstaImg(text string) (string, error) {
@@ -21,16 +22,26 @@ func getInstaImg(text string) (string, error) {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
 	err := r.ParseForm()
 	if err != nil {
-		fmt.Fprint(w, "`wrong input`")
+		fmt.Fprint(w, "`Wrong input`")
 		return
 	}
+
+	//strip string
+	limitedChannels := strings.Replace(" ", "", os.Getenv("LIMITED_CHANNELS"), -1)
+	if limitedChannels != "" {
+		limitedChannelsArr := strings.Split(limitedChannels, ",")
+		if !contains(limitedChannelsArr, r.FormValue("channel_name")) {
+			fmt.Fprint(w, "`No permission`")
+			return
+		}
+	}
+	w.Header().Set("Content-Type", "application/json")
 	text := r.FormValue("text")
 	imgUrl, err := getInstaImg(text)
 	if err != nil {
-		fmt.Fprint(w, "`no img found`")
+		fmt.Fprint(w, "`No img found`")
 		return
 	}
 	fmt.Fprintf(w, `{"response_type": "in_channel", "attachments": [{"fields": [{"title": "%s"}],"image_url": "%s"}]}`, text, imgUrl)
@@ -42,4 +53,13 @@ func main() {
 
 	log.Printf("Listening on %s\n", addr)
 	log.Fatal(http.ListenAndServe(addr, nil))
+}
+
+func contains(arr []string, str string) bool {
+	for _, value := range arr {
+		if value == str {
+			return true
+		}
+	}
+	return false
 }

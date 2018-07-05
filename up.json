@@ -1,5 +1,8 @@
 {
   "name": "peachy-slack-app",
   "profile": "money",
-  "regions": ["ap-southeast-1"]
+  "regions": ["ap-southeast-1"],
+  "environment": {
+    "LIMITED_CHANNELS": ""
+  }
 }
