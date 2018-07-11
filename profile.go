@@ -21,6 +21,9 @@ var randomProfiles = []string{
 	"taotao1441",
 	"ellabae_21",
 	"amy.nguyen97",
+	"lalinbaby_",
+	"pongkyubi",
+	"thaotran2296",
 }
 
 type InstagProfileResponse struct {
