@@ -14,6 +14,7 @@ var randomProfiles = []string{
 	"asian_girls_cuties",
 	"vnsexy.collection",
 	"vietnamesexybabe",
+	"elly_yj",
 }
 
 type InstagProfileResponse struct {
