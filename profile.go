@@ -16,6 +16,11 @@ var randomProfiles = []string{
 	"elly_yj",
 	"tyty__angel",
 	"iamnhilolo_",
+	"linhcandy12",
+	"anlee.9x",
+	"taotao1441",
+	"ellabae_21",
+	"amy.nguyen97",
 }
 
 type InstagProfileResponse struct {
