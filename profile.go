@@ -9,7 +9,6 @@ import (
 const profileUrl = "https://www.instagram.com/%s"
 
 var randomProfiles = []string{
-	"asian_girls79",
 	"asianhotgirlsdaily",
 	"asian_girls_cuties",
 	"vnsexy.collection",
